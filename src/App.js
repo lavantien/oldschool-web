@@ -1,25 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    const [count, setCount] = useState(0);
+
+    function handleIncClick() {
+        setCount(count + 1);
+    }
+
+    function handleDecClick() {
+        setCount(count - 1);
+    }
+
+    return (
+        <div className="App">
+            <header className="App-header">
+                <h1>{count}</h1>
+                <IncButton onClick={handleIncClick}>Increment</IncButton>
+                <DecButton onClick={handleDecClick}>Decrement</DecButton>
+            </header>
+        </div>
+    );
 }
 
-export default App;
+function IncButton({ onClick }) {
+    return (
+        <button onClick={onClick}>
+        +
+        </button>
+    )
+}
+
+function DecButton({ onClick }) {
+    return (
+        <button onClick={onClick}>
+        -
+        </button>
+    )
+}
